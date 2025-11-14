@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  maxbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: maxbot
+    restart: unless-stopped
+    environment:
+      - MAX_BOT_TOKEN=${MAX_BOT_TOKEN}
+      - NODE_ENV=production
+    volumes:
+      # Сохраняем базу данных на хосте
+      - ./db:/app/db
+    # Если нужно, можно добавить порты
+    # ports:
+    #   - "3000:3000"
+
